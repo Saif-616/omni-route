@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { useOmniContext } from "@/lib/context/OmniContext";
 import { OmniDashboard } from "@/components/dashboard/OmniDashboard";
 import { ThermalTrafficMap } from "@/components/map/ThermalTrafficMap";
-import { WeatherIcon3D } from "@/components/weather/WeatherIcon3D";
 import { BentoCard } from "@/components/ui/BentoCard";
 import { MapPin, Navigation, Clock, ShieldCheck, Info } from "lucide-react";
 import { MOCK_LOCATIONS } from "@/lib/api/earth2-mock";
@@ -115,12 +114,34 @@ export default function Home() {
               <OmniDashboard weather={useOmniContext().weather} routes={routes} selectedRouteId={selectedRouteId} />
             </div>
             <Link href="/insights" scroll={false}>
-              <BentoCard delay={0.4} layoutId="insights-card" className="flex flex-col items-center justify-center min-h-[250px] cursor-pointer h-full group text-center">
-                <h3 className="text-gray-400 font-bold mb-2 uppercase tracking-widest text-xs group-hover:text-primary transition-colors">Research Intelligence</h3>
-                <WeatherIcon3D />
-                <div className="mt-4 flex flex-col items-center">
-                  <p className="text-sm font-semibold text-primary group-hover:text-white transition-colors flex items-center justify-center gap-2">View Research Base <Info size={14} /></p>
-                  <p className="text-xs text-gray-500 mt-1">Core Tech & Methodology</p>
+              <BentoCard delay={0.4} layoutId="insights-card" className="flex flex-col cursor-pointer h-full group">
+                <div className="flex items-center gap-2 mb-2">
+                  <h3 className="text-gray-400 font-bold uppercase tracking-widest text-xs group-hover:text-primary transition-colors">Research Intelligence</h3>
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse shadow-[0_0_8px_rgba(50,181,49,0.8)]" />
+                </div>
+                
+                <p className="text-[11px] text-gray-500 leading-tight mb-6">
+                  Powered by atmospheric AI models trained on UAE climate data.
+                </p>
+
+                <div className="flex-1 space-y-4 mb-8">
+                  {[
+                    { label: "Data Resolution", value: "200m hyper-local" },
+                    { label: "Thermal Sources", value: "NVIDIA Earth-2 + FortyGuard" },
+                    { label: "Route Recalcs", value: "Every 90 sec" }
+                  ].map((stat, i) => (
+                    <div key={i} className="flex justify-between items-center text-xs border-b border-white/5 pb-2">
+                      <span className="text-gray-500 font-medium uppercase tracking-tighter">{stat.label}</span>
+                      <span className="text-white font-bold">{stat.value}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-auto pt-4 border-t border-white/5">
+                  <p className="text-sm font-semibold text-primary group-hover:text-white transition-colors flex items-center gap-2">
+                    View Research Base <Info size={14} />
+                  </p>
+                  <p className="text-[10px] text-gray-500 mt-1">Core Tech & Methodology</p>
                 </div>
               </BentoCard>
             </Link>
