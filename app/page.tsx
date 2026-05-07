@@ -246,7 +246,7 @@ export default function Home() {
           
           <div className="flex items-center gap-8">
             <Link href="/pitch" scroll={false} className="text-xs font-bold text-gray-500 hover:text-primary transition-colors tracking-widest uppercase">
-              Investors & Partners
+              Investors & Partners → Launch Pitch Deck
             </Link>
             <span className="text-[10px] text-gray-700 font-bold uppercase tracking-widest">
               © 2026 Omni-Route Ecosystem
