@@ -83,7 +83,7 @@ export const OmniBotFAB = () => {
         }
       }
 
-      setMessages(prev => [...prev, { id: Date.now().toString(), role: "bot", content: botResponse }]);
+      setMessages((prev: Message[]) => [...prev, { id: Date.now().toString(), role: "bot", content: botResponse }]);
     }, 600);
   };
 
@@ -137,8 +137,8 @@ export const OmniBotFAB = () => {
                 <input 
                   type="text" 
                   value={input}
-                  onChange={(e) => setInput(e.target.value)}
-                  onKeyDown={(e) => e.key === "Enter" && handleSend()}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInput(e.target.value)}
+                  onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => e.key === "Enter" && handleSend()}
                   placeholder="Ask about our data science..."
                   className="w-full bg-white/5 border border-white/10 rounded-full py-3 pl-4 pr-12 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-primary/50 transition-colors"
                 />

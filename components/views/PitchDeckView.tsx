@@ -32,9 +32,9 @@ export const PitchDeckView = ({ isModal = false }: { isModal?: boolean }) => {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "ArrowRight" || e.key === "Space") {
-        setCurrentSlide(prev => Math.min(prev + 1, slides.length - 1));
+        setCurrentSlide((prev: number) => Math.min(prev + 1, slides.length - 1));
       } else if (e.key === "ArrowLeft") {
-        setCurrentSlide(prev => Math.max(prev - 1, 0));
+        setCurrentSlide((prev: number) => Math.max(prev - 1, 0));
       } else if (e.key === "Escape" && isModal) {
         router.back();
       }
@@ -96,14 +96,14 @@ export const PitchDeckView = ({ isModal = false }: { isModal?: boolean }) => {
         </div>
         <div className="flex gap-4 pointer-events-auto">
           <button 
-            onClick={() => setCurrentSlide(prev => Math.max(prev - 1, 0))}
+            onClick={() => setCurrentSlide((prev: number) => Math.max(prev - 1, 0))}
             disabled={currentSlide === 0}
             className="p-3 rounded-full bg-white/5 border border-white/10 hover:bg-primary/20 hover:text-primary hover:border-primary/50 disabled:opacity-30 transition-all"
           >
             <ChevronLeft size={24} />
           </button>
           <button 
-            onClick={() => setCurrentSlide(prev => Math.min(prev + 1, slides.length - 1))}
+            onClick={() => setCurrentSlide((prev: number) => Math.min(prev + 1, slides.length - 1))}
             disabled={currentSlide === slides.length - 1}
             className="p-3 rounded-full bg-white/5 border border-white/10 hover:bg-primary/20 hover:text-primary hover:border-primary/50 disabled:opacity-30 transition-all shadow-[0_0_15px_rgba(50,181,49,0.3)]"
           >

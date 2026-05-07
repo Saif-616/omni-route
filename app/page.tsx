@@ -37,7 +37,7 @@ export default function Home() {
             <select 
               className="bg-transparent outline-none cursor-pointer"
               value={location.name}
-              onChange={(e) => setLocation(MOCK_LOCATIONS.find(l => l.name === e.target.value) || MOCK_LOCATIONS[0])}
+              onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setLocation(MOCK_LOCATIONS.find(l => l.name === e.target.value) || MOCK_LOCATIONS[0])}
             >
               {MOCK_LOCATIONS.map(loc => (
                 <option key={loc.name} value={loc.name} className="bg-black">{loc.name}</option>
@@ -84,7 +84,7 @@ export default function Home() {
                     delay={0.5 + (i * 0.1)}
                     glowColor={route.id === selectedRouteId ? "primary" : "none"}
                     className={`cursor-pointer transition-all ${route.id !== selectedRouteId ? 'opacity-60 hover:opacity-100' : ''}`}
-                    onClick={(e) => { e.preventDefault(); setSelectedRouteId(route.id); }}
+                    onClick={(e: React.MouseEvent) => { e.preventDefault(); setSelectedRouteId(route.id); }}
                   >
                     <div className="flex justify-between items-start mb-2">
                       <h3 className="font-bold text-lg">{route.name}</h3>
