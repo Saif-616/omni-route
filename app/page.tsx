@@ -128,7 +128,7 @@ export default function Home() {
                   {[
                     { label: "Data Resolution", value: "200m hyper-local" },
                     { label: "Thermal Sources", value: "NVIDIA Earth-2 + FortyGuard" },
-                    { label: "Route Recalcs", value: "Every 90 sec" }
+                    { label: "Route Recalculations", value: "Every 90 sec" }
                   ].map((stat, i) => (
                     <div key={i} className="flex justify-between items-center text-xs border-b border-white/5 pb-2">
                       <span className="text-gray-500 font-medium uppercase tracking-tighter">{stat.label}</span>
