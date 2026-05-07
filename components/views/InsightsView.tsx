@@ -1,7 +1,8 @@
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
-import { X, Lightbulb, HelpCircle } from "lucide-react";
+import { X, Lightbulb, HelpCircle, Thermometer } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 export const InsightsView = ({ isModal = false }: { isModal?: boolean }) => {
@@ -47,7 +48,7 @@ export const InsightsView = ({ isModal = false }: { isModal?: boolean }) => {
             { step: "01", title: "Atmospheric Ingestion", desc: "We ingest NVIDIA Earth-2 atmospheric data at 200m resolution via G42's NANDA model." },
             { step: "02", title: "Spatial Overlay", desc: "We overlay RTA real-time traffic twins and hyper-local shade mapping onto the grid." },
             { step: "03", title: "Route Synthesis", desc: "Our Rider Comfort Engine recommends the safest, fastest route based on thermal cost." }
-          ].map((item, i) => (
+          ].map((item: { step: string; title: string; desc: string }, i: number) => (
             <div key={i} className="bg-white/5 border border-white/10 p-8 rounded-3xl group hover:border-primary/50 transition-colors">
               <div className="text-4xl font-black text-primary/20 mb-4 group-hover:text-primary/40 transition-colors">{item.step}</div>
               <h3 className="text-xl font-bold mb-3">{item.title}</h3>
@@ -75,7 +76,7 @@ export const InsightsView = ({ isModal = false }: { isModal?: boolean }) => {
                 { m: "Heat Awareness", t: "None (Static/Ignored)", o: "Dynamic (200m Mesh Precision)" },
                 { m: "Rider Safety Alerts", t: "General Weather Only", o: "Predictive Anomaly & Heat Spikes" },
                 { m: "Optimization Factor", t: "Shortest Distance/Time", o: "Thermal Cost + Welfare ROI" }
-              ].map((row, i) => (
+              ].map((row: { m: string; t: string; o: string }, i: number) => (
                 <tr key={i} className="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
                   <td className="p-6 text-sm font-bold text-gray-300">{row.m}</td>
                   <td className="p-6 text-sm text-gray-500">{row.t}</td>
@@ -131,7 +132,7 @@ export const InsightsView = ({ isModal = false }: { isModal?: boolean }) => {
               { q: "How often is traffic updated?", a: "Traffic is updated in real-time via Dubai Pulse APIs and RTA Clear Guide metrics." },
               { q: "What happens during a sandstorm?", a: "Our Anomaly Detection system recalculates ETA predictions and warns riders to adjust their speed or seek shelter if visibility drops below safe thresholds." },
               { q: "Is Omni-Route available for individual riders?", a: "Yes — riders can access the route planner directly at omni-route/nav for personal use." }
-            ].map((faq, i) => (
+            ].map((faq: { q: string; a: string }, i: number) => (
               <div key={i} className="bg-white/5 p-5 rounded-2xl border border-white/5 group hover:border-white/10 transition-colors">
                 <h4 className="font-bold text-white mb-2 text-sm">{faq.q}</h4>
                 <p className="text-xs text-gray-400 leading-relaxed">{faq.a}</p>

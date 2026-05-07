@@ -1,6 +1,4 @@
-"use client";
-
-import { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageSquare, X, Send, Bot } from "lucide-react";
 import { cn } from "@/lib/utils/cn";
@@ -116,7 +114,7 @@ export const OmniBotFAB = () => {
 
             {/* Messages */}
             <div className="flex-1 overflow-y-auto p-4 space-y-4">
-              {messages.map((msg) => (
+              {messages.map((msg: Message) => (
                 <div key={msg.id} className={cn("flex", msg.role === "user" ? "justify-end" : "justify-start")}>
                   <div className={cn(
                     "max-w-[85%] p-3 rounded-2xl text-sm leading-relaxed",
