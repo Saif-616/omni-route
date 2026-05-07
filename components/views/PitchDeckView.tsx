@@ -49,17 +49,28 @@ export const PitchDeckView = ({ isModal = false }: { isModal?: boolean }) => {
     <div className="w-full h-full relative overflow-hidden bg-[#070707] text-white flex flex-col font-sans">
       {/* Header Controls */}
       <div className="absolute top-0 left-0 right-0 z-50 p-6 flex justify-between items-center pointer-events-none">
-        <div className="flex items-center gap-2 pointer-events-auto">
+        <div className="flex items-center gap-3 pointer-events-auto">
           <div className="w-8 h-8 rounded-full bg-primary shadow-neon flex items-center justify-center">
             <Globe2 className="text-black" size={18} />
           </div>
-          <span className="font-extrabold text-xl tracking-tight">OMNI<span className="text-primary">-ROUTE</span></span>
+          <div className="flex flex-col">
+            <span className="font-extrabold text-xl tracking-tight leading-none">OMNI<span className="text-primary">-ROUTE</span></span>
+            <span className="text-[10px] font-black text-primary uppercase tracking-[0.2em] mt-1">Interactive Demo</span>
+          </div>
         </div>
-        {isModal && (
-          <button onClick={() => router.back()} className="p-3 bg-white/5 hover:bg-white/10 rounded-full transition-colors border border-white/10 pointer-events-auto backdrop-blur">
-            <X size={20} />
+        <div className="flex items-center gap-4 pointer-events-auto">
+          <button 
+            onClick={() => router.push("/")} 
+            className="px-4 py-2 bg-white/5 hover:bg-white/10 rounded-full transition-all border border-white/10 text-xs font-bold tracking-widest uppercase flex items-center gap-2"
+          >
+            Exit to Dashboard
           </button>
-        )}
+          {isModal && (
+            <button onClick={() => router.back()} className="p-3 bg-white/5 hover:bg-white/10 rounded-full transition-colors border border-white/10 backdrop-blur">
+              <X size={20} />
+            </button>
+          )}
+        </div>
       </div>
 
       {/* Main Slide Area */}

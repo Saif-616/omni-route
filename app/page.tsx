@@ -22,6 +22,7 @@ export default function Home() {
             <Navigation className="text-black" size={18} />
           </div>
           <h1 className="font-extrabold text-xl tracking-tight">OMNI<span className="text-primary">-ROUTE</span></h1>
+          <span className="bg-primary/10 text-primary text-[10px] font-black px-2 py-0.5 rounded border border-primary/20 tracking-tighter uppercase">Demo</span>
         </div>
         <div className="flex items-center gap-4">
           <Link href="/insights" scroll={false} className="text-gray-400 hover:text-white transition-colors flex items-center gap-2 text-sm font-semibold">

@@ -75,11 +75,14 @@ export const OmniBotFAB = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div 
+            drag
+            dragConstraints={{ left: -window?.innerWidth + 400, right: 0, top: -window?.innerHeight + 500, bottom: 0 }}
+            dragElastic={0.05}
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="fixed bottom-24 right-6 w-80 sm:w-96 h-[500px] max-h-[70vh] glass rounded-3xl border border-primary/30 shadow-neon z-50 flex flex-col overflow-hidden"
+            className="fixed bottom-24 right-6 w-80 sm:w-96 h-[500px] max-h-[70vh] glass rounded-3xl border border-primary/30 shadow-neon z-[998] flex flex-col overflow-hidden"
           >
             {/* Header */}
             <div className="p-4 border-b border-white/10 bg-black/50 backdrop-blur-md flex justify-between items-center">
@@ -136,13 +139,16 @@ export const OmniBotFAB = () => {
       </AnimatePresence>
 
       <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+        drag
+        dragConstraints={{ left: -window?.innerWidth + 80, right: 0, top: -window?.innerHeight + 80, bottom: 0 }}
+        dragElastic={0.1}
+        dragMomentum={false}
+        whileHover={{ scale: 1.05, cursor: "grab" }}
+        whileTap={{ scale: 0.95, cursor: "grabbing" }}
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 w-14 h-14 bg-primary text-black rounded-full flex items-center justify-center shadow-neon z-50 overflow-hidden group"
+        className="fixed bottom-6 right-6 w-14 h-14 bg-primary text-black rounded-full flex items-center justify-center shadow-neon z-[999] overflow-hidden group"
       >
         {isOpen ? <X size={24} /> : <MessageSquare size={24} />}
-        {/* Radar sweep animation */}
         <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/40 to-transparent rotate-0 group-hover:animate-spin" style={{ animationDuration: '3s' }} />
       </motion.button>
     </>

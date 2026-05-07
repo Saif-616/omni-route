@@ -12,7 +12,10 @@ export const InsightsView = ({ isModal = false }: { isModal?: boolean }) => {
       <div className="flex justify-between items-start mb-8">
         <div>
           <h1 className="text-3xl font-extrabold tracking-tight">THE FUTURE OF LOGISTICS</h1>
-          <p className="text-gray-400">Insights & Knowledge Base</p>
+          <div className="flex items-center gap-2 mt-1">
+            <p className="text-gray-400">Insights & Knowledge Base</p>
+            <span className="text-[10px] font-black bg-primary/20 text-primary px-2 py-0.5 rounded border border-primary/20 uppercase tracking-widest">Demo</span>
+          </div>
         </div>
         {isModal && (
           <button onClick={() => router.back()} className="p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors">
