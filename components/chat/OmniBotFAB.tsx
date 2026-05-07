@@ -39,13 +39,30 @@ export const OmniBotFAB = () => {
   const [input, setInput] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
+  const [mounted, setMounted] = useState(false);
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   useEffect(() => {
+    setMounted(true);
+    setDimensions({ width: window.innerWidth, height: window.innerHeight });
+    
+    const handleResize = () => {
+      setDimensions({ width: window.innerWidth, height: window.innerHeight });
+    };
+    
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  if (!mounted) return null;
 
   const handleSend = () => {
     if (!input.trim()) return;
@@ -76,7 +93,7 @@ export const OmniBotFAB = () => {
         {isOpen && (
           <motion.div 
             drag
-            dragConstraints={{ left: -window?.innerWidth + 400, right: 0, top: -window?.innerHeight + 500, bottom: 0 }}
+            dragConstraints={{ left: -dimensions.width + 400, right: 0, top: -dimensions.height + 500, bottom: 0 }}
             dragElastic={0.05}
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -140,7 +157,7 @@ export const OmniBotFAB = () => {
 
       <motion.button
         drag
-        dragConstraints={{ left: -window?.innerWidth + 80, right: 0, top: -window?.innerHeight + 80, bottom: 0 }}
+        dragConstraints={{ left: -dimensions.width + 80, right: 0, top: -dimensions.height + 80, bottom: 0 }}
         dragElastic={0.1}
         dragMomentum={false}
         whileHover={{ scale: 1.05, cursor: "grab" }}
